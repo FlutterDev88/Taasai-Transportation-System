@@ -1,0 +1,35 @@
+/* You can add global styles to this file, and also import other style files */
+
+.card {
+border: 0px !important;
+box-shadow: 0 1px 2px 1px #e6ecf1;
+}
+.card-header{
+border-bottom: 1px solid #eaeff3 !important;
+}
+.form-control.is-invalid{
+background-image: none !important;
+}
+.btn-purple{
+    background-color: #706fd3;
+    color: #ffffff;
+}
+.btn-purple :hover{
+    color: #ffffff;
+}
+agm-map {
+    height:100%;
+    width: 100%;
+  }
+table.table-bordered.dataTable tbody th, table.table-bordered.dataTable tbody td{
+    vertical-align: middle;
+}
+table.dataTable tbody td {
+  word-break: break-word;
+}
+.text-wrap{
+    white-space:normal;
+}
+.width-200{
+    max-width:200px;
+}
