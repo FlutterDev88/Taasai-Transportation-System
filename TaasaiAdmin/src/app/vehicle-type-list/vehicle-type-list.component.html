@@ -1,0 +1,84 @@
+<div class="row page-tilte align-items-center">
+  
+  <div class="col-md-auto">
+    <a href="#" class="mt-3 d-md-none float-right toggle-controls"><span class="material-icons">keyboard_arrow_down</span></a>
+    <h1 class="weight-300 h3 title">{{ category_name }} - <h1 class="weight-300 h3 title" translate>vehicle_type_title</h1></h1>
+    <p class="text-muted m-0 desc"></p>
+  </div>
+  
+  <div class="col controls-wrapper mt-3 mt-md-0 d-none d-md-block ">
+    <div class="controls d-flex justify-content-center justify-content-md-end">
+      <button type="button" routerLink="new" routerLinkActive="active" style="cursor:pointer;" class="btn btn-primary" style="float:right" translate> <span class="material-icons mr-2 align-top">add</span>vehicle_type_title_add_new</button>
+    </div>
+  </div>
+
+</div>
+
+<div class="content">
+  <table datatable  [dtTrigger]="dtTrigger" id="example"  class="table table-striped mb-4 bg-white table-bordered">
+    <thead>
+      <tr>
+        <th translate>vehicle_type_id</th>
+        <th translate>vehicle_type_name</th>
+        <th data-orderable="false" translate>vehicle_type_inactive_image</th>
+        <th data-orderable="false" translate>vehicle_type_active_image</th>
+        <th data-orderable="false" translate>vehicle_type_status</th>
+        <th data-orderable="false" translate>vehicle_type_action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let vehicletype of vehicletypes">
+        <td>{{vehicletype.ID}}</td>
+        <td>{{vehicletype.Name}}</td>
+        <td><img src="{{'http://35.197.237.60:4001/'+vehicletype.Image}}" height="50" width="50"/></td>
+        <td><img src="{{'http://35.197.237.60:4001/'+vehicletype.ImageActive}}" height="50" width="50"/></td>
+        <td>
+          <span [hidden]="!vehicletype.IsActive" class="badge badge-pill badge-success" style="padding-top:4px;padding-bottom:4px;padding-left:8px;padding-right:8px;color:#FFFFFF;font-size: 12px;" translate>vehicle_type_enabled</span>
+          <span [hidden]="vehicletype.IsActive" class="badge badge-pill badge-danger" style="padding-top:4px;padding-bottom:4px;padding-left:8px;padding-right:8px;color:#FFFFFF;font-size: 12px;" translate>vehicle_type_disabled</span>
+        </td>
+        <td>
+          <button [hidden]="!vehicletype.IsActive" type="button" class="btn btn-warning btn-sm" style="margin-right:10px;"
+            (click)="navigateToEdit(vehicletype.ID,vehicletype.Name)" translate>vehicle_type_Edit</button>
+          <button [hidden]="vehicletype.IsActive" type="button" class="btn btn-outline-success btn-sm" (click)="enableVehicleTypes(vehicletype.ID,vehicletype.Name)" translate>vehicle_type_enable</button>
+          <button [hidden]="!vehicletype.IsActive" type="button" class="btn btn-outline-danger btn-sm" (click)="openModal(VehicleType_disable_modal)" translate>vehicle_type_disable</button>
+         
+          <ng-template #VehicleType_disable_modal>
+            <div class="modal-header">
+              <h4 class="modal-title pull-left">Vehicle Type</h4>
+              <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+             Do you want to disable this Vehicle type <br>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn mb-2 flat btn-sm btn-outline-warning" (click)="modalRef.hide()">Cancel</button>
+              <button [hidden]="!vehicletype.IsActive" type="button" class="btn mb-2 flat btn-sm btn-outline-danger" (click)="disableVehicleTypes(vehicletype.ID,vehicletype.Name); modalRef.hide()">Confirm</button>
+            </div>
+          </ng-template>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="loader-wrapper incomponent" id="demoCardLoader" [style.display]="isLoading? 'block':'none'">
+    <div class="spinner">
+      <svg viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+        <circle class="length" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="28"></circle>
+      </svg>
+      <svg viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+        <circle fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="28"></circle>
+      </svg>
+      <svg viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+        <circle fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="28"></circle>
+      </svg>
+      <svg viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+        <circle fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="28"></circle>
+      </svg>
+    </div>
+  </div>
+  
+</div>
+          
+
