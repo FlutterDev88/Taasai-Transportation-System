@@ -1,0 +1,85 @@
+<section class="wrapper">
+
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <nav class="navbar navbar-dark bg-success" >
+      <a [hidden]="!isAdmin"  class="navbar-brand m-0 py-2 brand-title" href="#">Taasai Admin</a>
+      <a [hidden]="isAdmin"  class="navbar-brand m-0 py-2 brand-title" href="#">Taasai Operator</a>
+      <span></span>
+      <a class="navbar-brand py-2 material-icons toggle-sidebar" href="#">menu</a>
+    </nav>
+
+    <nav class="navigation">
+      <ul>
+        <li [hidden]="!isAdmin"  routerLink="dashboard" [routerLinkActiveOptions]="{exact:true}"  routerLinkActive="active" class="" style="cursor:pointer;"><a title="Dashboard" translate><span class="nav-icon material-icons">web</span>
+            _dashboard<span class="toogle-sub-nav material-icons">keyboard_arrow_right</span></a> </li>
+            <hr>
+        <li [hidden]="!isAdmin" routerLink="vehicletypecategory" routerLinkActive="active" class="" style="cursor:pointer;"><a
+            title="Dashboard"><span class="nav-icon material-icons">local_car_wash</span>
+            Vehicle Categories<span class="toogle-sub-nav material-icons">keyboard_arrow_right</span></a></li>
+
+        <li [hidden]="!isAdmin" routerLink="locations" routerLinkActive="active" class="" style="cursor:pointer;"><a  title="Dashboard"><span class="nav-icon material-icons">location_on</span>
+            Operators<span class="toogle-sub-nav material-icons">keyboard_arrow_right</span></a></li>
+
+        <li [hidden]="isAdmin" routerLink="locations" routerLinkActive="active" class="" style="cursor:pointer;"><a  title="Dashboard"><span class="nav-icon material-icons">location_on</span>
+            Operator <span class="toogle-sub-nav material-icons">keyboard_arrow_right</span></a></li>
+        <li [hidden]="isAdmin" routerLink="documents" routerLinkActive="active" class="" style="cursor:pointer;"><a title="Dashboard"><span
+                class="nav-icon material-icons">contacts</span> Driver Documents<span class="toogle-sub-nav material-icons">keyboard_arrow_right</span></a></li>
+        <li routerLink="drivers" routerLinkActive="active" class="" style="cursor:pointer;"><a title="Dashboard"><span
+                class="nav-icon material-icons">contacts</span> Drivers<span class="toogle-sub-nav material-icons">keyboard_arrow_right</span></a></li>
+
+        <li routerLink="rides" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active" class="" style="cursor:pointer;"><a title="Dashboard"><span class="nav-icon material-icons">swap_calls</span>
+            Rides<span class="toogle-sub-nav material-icons">keyboard_arrow_right</span></a></li>
+        <li routerLink="passenger" routerLinkActive="active" class="" style="cursor:pointer;"><a title="Dashboard"><span
+              class="nav-icon material-icons">contacts</span> Passengers<span class="toogle-sub-nav material-icons">keyboard_arrow_right</span></a></li>
+                    <hr>
+        <!--li routerLink="promocode" routerLinkActive="active" class="" style="cursor:pointer;"><a title="Dashboard"><span
+                  class="nav-icon material-icons">stars</span>
+            Ratings & Reviews<span class="toogle-sub-nav material-icons">keyboard_arrow_right</span></a></li>
+        <li routerLink="promocode" routerLinkActive="active" class="" style="cursor:pointer;"><a title="Dashboard"><span
+              class="nav-icon material-icons">card_giftcard</span>
+            PromoCodes<span class="toogle-sub-nav material-icons">keyboard_arrow_right</span></a></li>
+        <li routerLink="company" routerLinkActive="active" class="" style="cursor:pointer;"><a title="Dashboard"><span
+              class="nav-icon material-icons">chat_bubble</span>
+            Push Notifications<span class="toogle-sub-nav material-icons">keyboard_arrow_right</span></a></li>
+            <hr>
+        <li routerLink="dispatcher" routerLinkActive="active" class="" style="cursor:pointer;"><a title="Dashboard"><span class="nav-icon material-icons">phone_callback</span>
+            Dispatcher<span class="toogle-sub-nav material-icons">keyboard_arrow_right</span></a></li-->
+      </ul>
+
+    </nav>
+
+  </aside>
+
+
+
+  <!--RIGHT CONTENT AREA-->
+  <div class="content-area">
+
+    <header class="header sticky-top">
+      <nav class="navbar navbar-light bg-white px-sm-4 " style="padding-bottom:14px;">
+        <a class="navbar-brand py-2 d-md-none  m-0 material-icons toggle-sidebar" href="#">menu</a>
+        <ul class="navbar-nav flex-row ml-auto">
+          <li class="nav-item ml-sm-3 user-logedin dropdown">
+            <a style="cursor:pointer;" class="dropdown-item" (click)=onLogout()>Logout</a>
+          </li>
+
+        </ul>
+      </nav>
+    </header>
+
+
+    <div class="content-wrapper">
+      <router-outlet></router-outlet>
+
+      <footer class="footer">
+        <p class="text-muted m-0"><small>Taasai © 2020 - www.taasai.com</small></p>
+      </footer>
+
+    </div>
+  </div>
+  <notifier-container></notifier-container>
+</section>
+
+
