@@ -1,0 +1,108 @@
+<div class="row page-tilte align-items-center">
+
+    <div class="col-md-auto">
+        <a href="#" class="mt-3 d-md-none float-right toggle-controls"><span
+                class="material-icons">keyboard_arrow_down</span></a>
+        <h1 class="weight-300 h3 title">{{company_name}} -   <h1 class="weight-300 h3 title" translate>add_vehicle_title</h1></h1>
+        <p class="text-muted m-0 desc"></p>
+    </div>
+</div>
+<div class="content">
+
+        <div class="row">
+            <div class="col-lg-12 ">
+                <div class="card mb-4">
+                <div class="card-header" translate>add_vehicle_details</div>
+                    <div class="card-body">
+                        <form [formGroup]="vehicleForm"> 
+                            <div class="form-group" >
+                                <label for="sel1" translate>add_vehicle_location</label>
+                                <select class="form-control" formControlName="location_id" name="location_id" [(ngModel)]="location_id" (change)="onLocationSelected($event.target.value)" [ngClass]="{'is-invalid': submitted && f.location_id.errors}">
+                                    <option [ngValue]="undefined" disabled  selected>Select Location</option>
+                                    <option *ngFor="let getlocation of getlocations" value="{{getlocation.LocationID}}">{{getlocation.Name}}</option>
+                                </select>
+                                <div *ngIf="submitted && f.location_id.errors" class="invalid-feedback">
+                                    <div *ngIf="f.location_id.errors.required" translate>add_vehicle_location_required</div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="sel1" translate>add_vehicle_type</label>
+                                <select class="form-control" formControlName="vehicle_type_id" name="vehicle_type_id" [(ngModel)]="vehicle_type_id" [ngClass]="{'is-invalid': submitted && f.vehicle_type_id.errors}">
+                                    <option [ngValue]="undefined" disabled  selected>Select Vehicle Type</option>
+                                    <option *ngFor="let vehicletype of vehicletypes" value="{{vehicletype.ID}}">{{vehicletype.VehicleCategoryName+"-"+vehicletype.Name}}</option>
+                                </select>
+                                <div *ngIf="submitted && f.vehicle_type_id.errors" class="invalid-feedback">
+                                    <div *ngIf="f.vehicle_type_id.errors.required" translate>add_vehicle_type_required</div>
+                                </div>
+                            </div>
+        
+                            <div class="form-group">
+                                <label for="name" translate>add_vehicle_name</label>
+                                <input type="text" formControlName="vehicle_name" name="vehicle_name" [(ngModel)]="vehicle_name" placeholder="Enter Vehicle Name"   class="form-control" [ngClass]="{'is-invalid': submitted && f.vehicle_name.errors}">
+                                <div *ngIf="submitted && f.vehicle_name.errors" class="invalid-feedback">
+                                    <div *ngIf="f.vehicle_name.errors.required">add_vehicle_name_required</div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="name" translate>add_vehicle_brand</label>
+                                <input type="text" formControlName="vehicle_brand" name="vehicle_brand" [(ngModel)]="vehicle_brand" placeholder="Enter Vehicle Brand" class="form-control" [ngClass]="{'is-invalid': submitted && f.vehicle_brand.errors}">
+                                <div *ngIf="submitted && f.vehicle_brand.errors" class="invalid-feedback">
+                                    <div *ngIf="f.vehicle_brand.errors.required">add_vehicle_brand_required</div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="name" translate>add_vehicle_model</label>
+                                <input type="text" formControlName="vehicle_model" name="vehicle_model" [(ngModel)]="vehicle_model" placeholder="Enter Vehicle Model"  class="form-control" [ngClass]="{'is-invalid': submitted && f.vehicle_model.errors}">
+                                <div *ngIf="submitted && f.vehicle_model.errors" class="invalid-feedback">
+                                    <div *ngIf="f.vehicle_model.errors.required">add_vehicle_model_required</div>
+                                </div>
+                            </div>
+          
+                            <div class="form-group">
+                                <label for="name" translate>add_vehicle_image</label>
+                                <div class="custom-file mb-4">
+                                    <input type="file" formControlName="vehicleImage" (change)="onSelectImage($event.target.files)" class="form-control custom-file-input" [ngClass]="{'is-invalid': submitted && f.vehicleImage.errors}" accept="image/x-png, image/gif, image/jpeg">
+                                    <label class="custom-file-label" for="customFile"><small>{{vehicle_image}}</small></label>
+                                    <div *ngIf="submitted && f.vehicleImage.errors" class="invalid-feedback">
+                                        <div *ngIf="f.vehicleImage.errors.required">add_vehicle_image_required</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="name" translate>add_vehicle_number</label>
+                                <input type="text" formControlName="vehicle_number"  name="vehicle_number" [(ngModel)]="vehicle_number" placeholder="Enter Vehicle Number" class="form-control" [ngClass]="{'is-invalid': submitted && f.vehicle_number.errors}">
+                                <div *ngIf="submitted && f.vehicle_number.errors" class="invalid-feedback">
+                                    <div *ngIf="f.vehicle_number.errors.required" translate>add_vehicle_number_required</div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="name" translate>add_vehicle_seat_capacity</label>
+                                <input type="number" min="0" formControlName="seat_capacity" name="seat_capacity" [(ngModel)]="seat_capacity" placeholder="Enter Seat Capacity"  class="form-control" [ngClass]="{'is-invalid': submitted && f.seat_capacity.errors}">
+                                <div *ngIf="submitted && f.seat_capacity.errors" class="invalid-feedback">
+                                    <div *ngIf="f.seat_capacity.errors.required" translate>add_vehicle_seat_capacity_required</div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="name" translate>add_vehicle_color</label>
+                                <input type="text" formControlName="vehicle_color" name="vehicle_color" [(ngModel)]="vehicle_color" placeholder="Enter Vehicle Color"   class="form-control" [ngClass]="{'is-invalid': submitted && f.vehicle_color.errors}">
+                                <div *ngIf="submitted && f.vehicle_color.errors" class="invalid-feedback">
+                                    <div *ngIf="f.vehicle_color.errors.required" translate>add_vehicle_color_required</div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                    <span><button (click)=onSubmit() class="btn btn-primary" translate>add_vehicle_submit</button></span>
+                                    <span style="margin-left: 20px;"><button (click)=onCancel() class="btn btn-danger" translate>add_vehicle_cancel</button></span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>

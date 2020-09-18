@@ -1,0 +1,169 @@
+<div class="content">
+
+
+
+  <div class="card mb-4">
+    <div class="card-body  p-lg-4">
+      <div class="row">
+
+
+
+        <div class="col-md-6 col-lg-3  mb-4 mb-lg-0">
+          <div class="media align-items-center">
+            <span
+              class="material-icons text-info mr-4 circle p-3 border border-info bg-info-light25">directions</span>
+            <div class="media-body">
+              <h4 class="weight-400 m-0">{{countData.RideCount}}</h4>
+              <small class="text-muted" translate>d_total_rides</small>
+            </div>
+          </div>
+          <div class="progress mt-3" style="height: 6px;">
+            <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+              aria-valuemax="100"></div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3  mb-4 mb-lg-0">
+          <div class="media align-items-center">
+            <span
+              class="material-icons text-danger mr-3 circle p-3 border border-danger bg-danger-light25">monetization_on</span>
+            <div class="media-body">
+              <h4 class="weight-400 m-0">{{countData.TotalRideEarnings}}</h4>
+              <small class="text-muted" translate>d_earnings</small>
+            </div>
+          </div>
+          <div class="progress mt-3" style="height: 6px;">
+            <div class="progress-bar bg-danger" role="progressbar" style="width: 50%" aria-valuenow="50"
+              aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+      <div class="col-md-6 col-lg-3  mb-4 mb-md-0 ">
+        <div class="media align-items-center">
+          <span class="material-icons text-success mr-3 circle p-3 border border-success bg-success-light25">place</span>
+          <div class="media-body">
+            <h4 class="weight-400 m-0">{{countData.LocationCount}}</h4>
+            <small class="text-muted" translate>d_location</small>
+          </div>
+        </div>
+        <div class="progress mt-3" style="height: 6px;">
+          <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+            aria-valuemax="100"></div>
+        </div>
+      </div>
+
+        <div class="col-md-6 col-lg-3 mb-4 mb-md-0">
+          <div class="media align-items-center">
+            <span
+              class="material-icons text-warning mr-3 circle p-3 border border-warning bg-warning-light25">group</span>
+            <div class="media-body">
+              <h4 class="weight-400 m-0">{{countData.PassengerCount}}</h4>
+              <small class="text-muted" translate>d_customers</small>
+            </div>
+          </div>
+          <div class="progress mt-3" style="height: 6px;">
+            <div class="progress-bar bg-warning" role="progressbar" style="width: 50%" aria-valuenow="50"
+              aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="card mb-4">
+    <div class="card-body  p-lg-4">
+      <div class="row">
+  
+        
+        <div class="col-md-6 col-lg-3 mb-4 mb-md-0">
+          <div class="media align-items-center">
+            <span class="material-icons text-warning mr-3 circle p-3 border border-warning bg-warning-light25">location_city</span>
+            <div class="media-body">
+              <h4 class="weight-400 m-0">{{countData.CompanyCount}}</h4>
+              <small class="text-muted" translate>d_companies</small>
+            </div>
+          </div>
+          <div class="progress mt-3" style="height: 6px;">
+            <div class="progress-bar bg-warning" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+              aria-valuemax="100"></div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3  mb-4 mb-md-0 ">
+          <div class="media align-items-center">
+            <span class="material-icons text-success mr-3 circle p-3 border border-success bg-success-light25">person_add</span>
+            <div class="media-body">
+              <h4 class="weight-400 m-0">{{countData.DriverCount}}</h4>
+              <small class="text-muted" translate>d_drivers</small>
+            </div>
+          </div>
+          <div class="progress mt-3" style="height: 6px;">
+            <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+              aria-valuemax="100"></div>
+          </div>
+        </div>
+  
+        
+        <div class="col-md-6 col-lg-3  mb-4 mb-lg-0">
+          <div class="media align-items-center">
+            <span class="material-icons text-info mr-4 circle p-3 border border-info bg-info-light25">directions_car</span>
+            <div class="media-body">
+              <h4 class="weight-400 m-0">{{countData.VehicleCount}}</h4>
+              <small class="text-muted" translate>d_vehicles</small>
+            </div>
+          </div>
+          <div class="progress mt-3" style="height: 6px;">
+            <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+              aria-valuemax="100"></div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3  mb-4 mb-lg-0">
+          <div class="media align-items-center">
+            <span
+              class="material-icons text-danger mr-3 circle p-3 border border-danger bg-danger-light25">local_taxi</span>
+            <div class="media-body">
+              <h4 class="weight-400 m-0">{{countData.VehicleTypeCount}}</h4>
+              <small class="text-muted" translate>d_vehicle_types</small>
+            </div>
+          </div>
+          <div class="progress mt-3" style="height: 6px;">
+            <div class="progress-bar bg-danger" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+              aria-valuemax="100"></div>
+          </div>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-lg-7 mb-4">
+      <div class="card  h-100">
+        <div class="card-header py-3" translate>d_ride_report</div>
+        <div class="card-body ">
+
+          <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+            [legend]="barChartLegend" [chartType]="barChartType"  ></canvas>
+            <br><br>
+          <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+            [legend]="barChartLegend" chartType="line"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-5 mb-4 mb-lg-0 ">
+      <div class="card h-100 ">
+        <div class="card-header" translate>d_ride_status</div>
+        <div class="card-body">
+          <canvas baseChart height="250px;" [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  
+
+
+
+</div>

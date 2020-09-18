@@ -1,0 +1,106 @@
+
+  <div class="content">
+    <div class="card mb-4">
+      <div class="card-header">Dispatcher</div>
+      <div class="card-body">
+          <div class="row">
+              <div class="col-lg-4 ">
+                <h4>Ride Details</h4>
+
+                
+                <form [formGroup]="dispatcherForm">
+
+                  <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" formControlName="name" [(ngModel)]="name" class="form-control" placeholder="Enter Name"  name="name" [ngClass]="{'is-invalid': submitted && f.name.errors}"/>
+                    <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                      <div *ngIf="f.name.errors.required">Name is required</div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="Email">Email</label>
+                    <input type="email" formControlName="email" class="form-control" placeholder="Enter Email Address" name="email" [ngClass]="{'is-invalid': submitted && f.name.errors}"/>
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                        <div *ngIf="f.email.errors.required">email is required</div>
+                        <div *ngIf="f.email.errors.email">not valid email</div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="mobile">Phone Number</label>
+                    <!--input type="number" formControlName="mobile" class="form-control" placeholder="Enter Phone Number" name="mobile" [ngClass]="{'is-invalid': submitted && f.mobile.errors}"/-->
+                    <ngx-intl-tel-input 
+                        [cssClass]="'custom'" 
+                        [preferredCountries]="['us', 'gb']" 
+                        [enablePlaceholder]="true"
+                        [enableAutoCountrySelect]="true"
+                        formControlName="mobile"
+                        [(ngModel)]="mobile"
+                        name="mobile" [ngClass]="{'is-invalid': submitted && f.mobile.errors}"
+                        ></ngx-intl-tel-input>
+
+                    <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
+                        <div *ngIf="f.mobile.errors.required">phone Number is required</div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="pickup_address">Pickup Address</label>
+                    <input class="form-control" formControlName="pickup_address"  name="pickup_address"  placeholder="Choose a location" ngx-google-places-autocomplete #placesRef="ngx-places" (onAddressChange)="pickupAddress($event)" [ngClass]="{'is-invalid': submitted && f.pickup_address.errors}"/>
+                    <div *ngIf="submitted && f.pickup_address.errors" class="invalid-feedback">
+                        <div *ngIf="f.pickup_address.errors.required">Pickup Address is required</div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="drop_address">Drop Address</label>
+                    <input class="form-control" formControlName="drop_address"   name="drop_aadress"  placeholder="Choose a location" ngx-google-places-autocomplete #placesRef="ngx-places" (onAddressChange)="dropAddress($event)" [ngClass]="{'is-invalid': submitted && f.drop_address.errors}"/>
+                    <div *ngIf="submitted && f.drop_address.errors" class="invalid-feedback">
+                        <div *ngIf="f.drop_address.errors.required">Drop Address is required</div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="schedule_time">Schedule Time</label>
+                    <!--input type="datetime-local" formControlName="schedule_time" placeholder="Select Shedule Time" class="form-control" name="schedule_time" [ngClass]="{'is-invalid': submitted && f.schedule_time.errors}"/-->
+                      
+                    <input [owlDateTimeTrigger]="dt5" [owlDateTime]="dt5" formControlName="schedule_time" placeholder="Select Shedule Time" class="form-control" name="schedule_time" [ngClass]="{'is-invalid': submitted && f.schedule_time.errors}">
+                    <owl-date-time [pickerMode]="'dialog'" #dt5></owl-date-time>
+                    <div *ngIf="submitted && f.schedule_time.errors" class="invalid-feedback">
+                        <div *ngIf="f.schedule_time.errors.required">Schedule Time is required</div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    
+                    <label for="service_type">Service Type</label>
+                    <select formControlName="service_type"  placeholder="Enter Phone Number" class="form-control" name="mobile" [ngClass]="{'is-invalid': submitted && f.service_type.errors}">
+                      <option>hello</option>
+                    </select>
+                    <div *ngIf="submitted && f.service_type.errors" class="invalid-feedback">
+                        <div *ngIf="f.service_type.errors.required">Service Type is required</div>
+                    </div>
+                  </div> 
+                  <div class="form-group">
+                      <label>Auto Assign Provider</label><br>
+                      <ui-switch></ui-switch>
+                  </div>
+                  <div class="form-group">
+                    <input type="button" (click)="onSubmit()" class="btn btn-success" value="submit"/>
+                  </div>
+                </form>
+              </div>
+              <div class="col-md-8">           
+                <agm-map [fullscreenControl]="true" [mapTypeControl]='true' [latitude]="pickup_lat" [longitude]="pickup_lng" [zoom]="10">      
+                  <agm-marker [latitude]="pickup_lat" [longitude]="pickup_lng" [label]="'A'">
+                  </agm-marker>
+                  <agm-direction [origin]="origin" [destination]="destination" *ngIf="location_direction">     
+                  </agm-direction>
+                </agm-map>
+             </div>
+           </div>          
+      </div>
+    </div> 
+  </div>
+

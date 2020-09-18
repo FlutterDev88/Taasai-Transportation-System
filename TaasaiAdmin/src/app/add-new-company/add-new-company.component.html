@@ -1,0 +1,76 @@
+<div class="content">
+
+  <div class="row">
+    <div class="col-lg-12 ">
+      <div class="card mb-4">
+        <div class="card-header" translate>company_add</div>
+        <div class="card-body">
+          <form [formGroup]="companyForm">
+            
+            <div class="form-group">
+              <label for="name" translate>add_company_name</label>
+              <input type="text" formControlName="name" placeholder="Enter Company Name" name="name" [(ngModel)]="name"
+                class="form-control" [ngClass]="{'is-invalid': submitted && f.name.errors}" autocomplete="off">
+              <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                <div *ngIf="f.name.errors.required" translate>add_company_name_required</div>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label for="name" translate>add_company_email</label>
+              <input type="email" formControlName="email" placeholder="Enter email address"
+                name="email" [(ngModel)]="email" class="form-control"
+                [ngClass]="{'is-invalid': submitted && f.email.errors}" autocomplete="off">
+              <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required" translate>add_company_email_required</div>
+              </div>
+            </div>
+            
+
+              <div class="form-group">
+                <label for="name" translate>add_company_locations</label>
+                <ngx-select-dropdown formControlName="location_id" name="location_id" [(ngModel)]="location_id" [config]="config" [multiple]="true"
+                  [options]="locationList" [ngClass]="{'is-invalid': submitted && f.location_id.errors}"></ngx-select-dropdown>                
+                  <div *ngIf="submitted && f.location_id.errors" class="invalid-feedback">
+                  <div *ngIf="f.location_id.errors.required" translate>add_company_locations_required</div>
+                </div>
+              </div>
+            <div class="form-group">
+              <label for="name"><p translate>add_company_commission</p><span class="strong" style="color: black;font-weight: 400;" translate>add_company_commission_include</span> </label>
+              <input type="number" formControlName="commission" placeholder="Enter your commisson" name="commission" [(ngModel)]="commission"
+                class="form-control" [ngClass]="{'is-invalid': submitted && f.commission.errors}" autocomplete="off">
+              <div *ngIf="submitted && f.commission.errors" class="invalid-feedback">
+                <div *ngIf="f.commission.errors.required" translate>add_company_commission_required</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="name" translate>add_company_password</label>
+              <input type="text" formControlName="password" placeholder="Enter Password" name="password"
+                [(ngModel)]="password" class="form-control" [ngClass]="{'is-invalid': submitted && f.password.errors}"
+                autocomplete="off">
+              <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                <div *ngIf="f.password.errors.required" translate>Password Is Required</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="name" translate>confirm_password</label>
+              <input type="text" formControlName="confirmPassword" placeholder="Enter Confirm Password" name="confirmPassword"
+                [(ngModel)]="confirmPassword" class="form-control" [ngClass]="{'is-invalid': submitted && f.confirmPassword.errors}"
+                autocomplete="off">
+              <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.confirmPassword.errors.required" translate>confirm_password_required</div>
+              </div>
+            </div>
+          
+            <div class="form-group">
+              <span><button (click)=onSubmit() class="btn btn-primary" translate>add_company_submit</button></span>
+              <span style="margin-left: 20px;"><button (click)=onCancel()
+                  class="btn btn-danger" translate>add_company_cancel</button></span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

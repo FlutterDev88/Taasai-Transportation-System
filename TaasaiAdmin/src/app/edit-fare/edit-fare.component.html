@@ -1,0 +1,162 @@
+<div class="row page-tilte align-items-center">
+
+  <div class="col-md-auto">
+    <a href="#" class="mt-3 d-md-none float-right toggle-controls"><span
+            class="material-icons">keyboard_arrow_down</span></a>
+    <h1 class="weight-300 h3 title">{{location_name}}</h1>
+
+    <p class="text-muted m-0 desc"></p>
+  </div>
+</div>
+<div class="content">
+
+  <div class="row">
+    <div class="col-lg-12 ">
+      <div class="card mb-4">
+        <div class="card-header" >Edit Fare</div>,
+        <div class="card-body">
+
+          <form [formGroup]="fareForm">
+
+            <div class="form-group">
+              <label for="sel1">VehicleType</label>
+              <input  disabled class="form-control" formControlName="vehicle_type" name="vehicle_type" [(ngModel)]="vehicle_type" >
+
+              <div *ngIf="submitted && f.vehicle_type_id.errors" class="invalid-feedback">
+                <div *ngIf="f.vehicle_type_id.errors.required" translate>add_fare_vehicle_type_name</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label translate>add_basefare</label>
+              <div class="input-group">
+                <input  type="number" min="0" class="form-control" formControlName="base_fare" name="base_fare" [(ngModel)]="base_fare"  placeholder="Enter Base Fare" [ngClass]="{'is-invalid': submitted && f.base_fare.errors}">
+                <div *ngIf="submitted && f.base_fare.errors" class="invalid-feedback">
+                  <div *ngIf="f.base_fare.errors.required" translate>add_basefare_required</div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label >Minimum Fare</label>
+              <div class="form-group input-group mb-3">
+                <input type="number" min="0" class="form-control" formControlName="minimum_fare" [ngClass]="{'is-invalid': submitted && f.base_fare_distance.errors}" name="minimum_fare" [(ngModel)]="minimum_fare" placeholder="Enter Minimum Fare" aria-label="Recipient's username" aria-describedby="basic-addon2">
+
+                <div *ngIf="submitted && f.base_fare_distance.errors" class="invalid-feedback">
+                  <div *ngIf="f.base_fare_distance.errors.required" translate>add_fare_km_basefare_required</div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label translate>add_distancefare</label>
+              <div class="form-group input-group mb-3">
+                <input type="number" min="0" class="form-control" formControlName="distance_fare" [ngClass]="{'is-invalid': submitted && f.distance_fare.errors}" name="distance_fare" [(ngModel)]="distance_fare" placeholder="Enter Distance Fare" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                  <span class="input-group-text" id="basic-addon2">Per Km</span>
+                </div>
+                <div *ngIf="submitted && f.distance_fare.errors" class="invalid-feedback">
+                  <div *ngIf="f.distance_fare.errors.required" translate>add_distancefare_required</div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label translate>add_durationfare</label>
+              <div class="form-group input-group mb-3">
+                <input type="number" min="0" class="form-control" formControlName="duration_fare" [ngClass]="{'is-invalid': submitted && f.duration_fare.errors}" name="duration_fare" [(ngModel)]="duration_fare" placeholder="Enter Duration Fare" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                  <span class="input-group-text" id="basic-addon2">Per Minute</span>
+                </div>
+                <div *ngIf="submitted && f.duration_fare.errors" class="invalid-feedback">
+                  <div *ngIf="f.duration_fare.errors.required" translate>add_durationfare_required</div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label >Ride Cancellation Time Limit</label>
+              <div class="form-group input-group mb-3">
+                <input type="number" min="0" class="form-control" formControlName="cancellationTimeLimit" [ngClass]="{'is-invalid': submitted && f.duration_fare.errors}" name="cancellationTimeLimit" [(ngModel)]="cancellationTimeLimit" placeholder="Enter Ride Cancellation Time Limit" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                  <span class="input-group-text" id="basic-addon2"> Minutes</span>
+                </div>
+                <div *ngIf="submitted && f.duration_fare.errors" class="invalid-feedback">
+                  <div *ngIf="f.duration_fare.errors.required" translate>add_durationfare_required</div>
+                </div>
+              </div>
+            </div>
+
+
+            <div>
+              <label >Ride Cancellation Charges</label>
+              <div class="form-group input-group mb-3">
+                <input type="number" min="0" class="form-control" formControlName="cancellationFee" [ngClass]="{'is-invalid': submitted && f.base_fare_distance.errors}" name="cancellationFee" [(ngModel)]="cancellationFee" placeholder="Enter Ride Cancellation Fee" aria-label="Recipient's username" aria-describedby="basic-addon2">
+
+                <div *ngIf="submitted && f.base_fare_distance.errors" class="invalid-feedback">
+                  <div *ngIf="f.base_fare_distance.errors.required" translate>add_fare_km_basefare_required</div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label >Waiting Time Limit</label>
+              <div class="form-group input-group mb-3">
+                <input type="number" min="0" class="form-control" formControlName="waitingTimeLimit" [ngClass]="{'is-invalid': submitted && f.duration_fare.errors}" name="waitingTimeLimit" [(ngModel)]="waitingTimeLimit" placeholder="Enter Waiting Time Limit" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                  <span class="input-group-text" id="basic-addon2"> Minutes</span>
+                </div>
+                <div *ngIf="submitted && f.duration_fare.errors" class="invalid-feedback">
+                  <div *ngIf="f.duration_fare.errors.required" translate>add_durationfare_required</div>
+                </div>
+              </div>
+            </div>
+
+
+            <div>
+              <label >Waiting Charges</label>
+              <div class="form-group input-group mb-3">
+                <input type="number" min="0" class="form-control" formControlName="waitingFee" [ngClass]="{'is-invalid': submitted && f.base_fare_distance.errors}" name="waitingFee" [(ngModel)]="waitingFee" placeholder="Enter Waiting Fee" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                  <span class="input-group-text" id="basic-addon2">Per Minute</span>
+                </div>
+                <div *ngIf="submitted && f.base_fare_distance.errors" class="invalid-feedback">
+                  <div *ngIf="f.base_fare_distance.errors.required" translate>add_fare_km_basefare_required</div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label translate>add_tax</label>
+              <div class="form-group input-group mb-3">
+                <input type="number" step="0.01" min="0" class="form-control" formControlName="Tax" [ngClass]="{'is-invalid': submitted && f.Tax.errors}" name="Tax" [(ngModel)]="Tax" placeholder="Enter Tax %" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                  <span class="input-group-text" id="basic-addon2">%</span>
+                </div>
+                <div *ngIf="submitted && f.Tax.errors" class="invalid-feedback">
+                  <div *ngIf="f.Tax.errors.required">add_tax_required </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <label >Traffic Factor(%)</label>
+              <div class="form-group input-group mb-3">
+                <input type="number" step="0.01" min="0" class="form-control" formControlName="trafficFactor" [ngClass]="{'is-invalid': submitted && f.Tax.errors}" name="trafficFactor" [(ngModel)]="trafficFactor" placeholder="Enter Traffic Factor %" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                  <span class="input-group-text" id="basic-addon2">%</span>
+                </div>
+                <div *ngIf="submitted && f.Tax.errors" class="invalid-feedback">
+                  <div *ngIf="f.Tax.errors.required">add_tax_required </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <span><button (click)=onSubmit() class="btn btn-primary" translate>add_fare_submit</button></span>
+              <span style="margin-left: 20px;"><button (click)="onCancel()" class="btn btn-danger" translate>add_fare_cancel</button></span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

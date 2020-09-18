@@ -1,0 +1,106 @@
+
+<div class="content">
+  <div class="card mb-4">
+    <div class="card-header">Edit Operator</div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-lg-6 ">
+          <form [formGroup]="locationForm" >
+            <div class="form-group">
+              <label for="name" >Operator Name</label>
+              <input type="text" formControlName="name" placeholder="Enter Company Name" name="name" [(ngModel)]="name"
+                     class="form-control" [ngClass]="{'is-invalid': submitted && f.name.errors}" autocomplete="off">
+              <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                <div *ngIf="f.name.errors.required" translate>add_company_name_required</div>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label for="name" translate>add_company_email</label>
+              <input type="email" formControlName="email" placeholder="Enter email address"
+                     name="email" [(ngModel)]="email" class="form-control"
+                     [ngClass]="{'is-invalid': submitted && f.email.errors}" autocomplete="off">
+              <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required" translate>add_company_email_required</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="exampleFormControlInput1" >Operator Location (Select from the dropdown)</label>
+              <input class="form-control is-invalid" formControlName="address" [(ngModel)]="address" name="address"  placeholder="Choose a location" ngx-google-places-autocomplete #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)" [ngClass]="{'is-invalid': submitted && f.address.errors}"/>
+              <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                <div *ngIf="f.address.errors.required" >Location is required</div>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label for="inputPassword4" >Location Name</label>
+              <input  class="form-control danger is-invalid" formControlName="locationName" [(ngModel)]="locationName" name="name" id="inputPassword4" placeholder="Enter location name" [ngClass]="{'is-invalid': submitted && f.name.errors}" autocomplete="off">
+              <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                <div *ngIf="f.locationName.errors.required" >Location name is required</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="inputAddress" >Currency Symbol</label>
+              <input type="text" formControlName="currency" [(ngModel)]="currency" name="currency" class="form-control is-invalid" id="inputAddress" placeholder="Enter a currency symbol" [ngClass]="{'is-invalid': submitted && f.currency.errors}">
+              <div *ngIf="submitted && f.currency.errors" class="invalid-feedback">
+                <div *ngIf="f.currency.errors.required" >Currency symbol is required</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="name">Taasai Commission</label>
+              <input type="number" formControlName="platformCommission" placeholder="Enter your commisson" name="commission" [(ngModel)]="platformCommission"
+                     class="form-control" [ngClass]="{'is-invalid': submitted && f.platformCommission.errors}" autocomplete="off">
+              <div *ngIf="submitted && f.platformCommission.errors" class="invalid-feedback">
+                <div *ngIf="f.platformCommission.errors.required" translate>Taasai commission is required</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="name">Operator Commission</label>
+              <input type="number" formControlName="operatorCommission" placeholder="Enter your commisson" name="commission" [(ngModel)]="operatorCommission"
+                     class="form-control" [ngClass]="{'is-invalid': submitted && f.operatorCommission.errors}" autocomplete="off">
+              <div *ngIf="submitted && f.operatorCommission.errors" class="invalid-feedback">
+                <div *ngIf="f.operatorCommission.errors.required" translate>Operator commission is required</div>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label for="name">Driver Maximum Work Time (hours per day)</label>
+              <input type="number" formControlName="driverWorkTime" placeholder="Enter driver work time" name="driverWorkTime" [(ngModel)]="driverWorkTime"
+                     class="form-control" [ngClass]="{'is-invalid': submitted && f.driverWorkTime.errors}" autocomplete="off">
+              <div *ngIf="submitted && f.driverWorkTime.errors" class="invalid-feedback">
+                <div *ngIf="f.driverWorkTime.errors.required" translate>DriverWorkTime is required</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="name">Driver Rest Time After Reaching Maximum Work Time (in hours)</label>
+              <input type="number" formControlName="driverRestTime" placeholder="Enter driver rest time" name="driverRestTime" [(ngModel)]="driverRestTime"
+                     class="form-control" [ngClass]="{'is-invalid': submitted && f.driverRestTime.errors}" autocomplete="off">
+              <div *ngIf="submitted && f.driverRestTime.errors" class="invalid-feedback">
+                <div *ngIf="f.driverRestTime.errors.required" translate>DriverRestTime is required</div>
+              </div>
+            </div>
+
+            <span><button (click)=onSubmit() class="btn btn-primary" translate>add_location_submit</button></span>
+            <span style="margin-left: 20px;"><button (click)=onCancel() class="btn btn-danger" translate>add_location_cancel</button></span>
+          </form>
+          <br>
+          <!--div class="alert alert-info mb-0" role="alert">
+            <h4 class="alert-heading weight-400" translate>howto_add_location</h4>
+            <p translate>add_location_desc</p>
+          </div-->
+        </div>
+        <div class="col-md-6">
+          <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="10">
+          </agm-map>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
